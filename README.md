@@ -9,7 +9,7 @@ To understand the Target Customers for the Marketing Team to plan a strategy, I 
 2. **K-Means Algorithm and the Elbow Methodology**
 3. **Summary Statistics**
 
-With these techniques, I identified the most important shopping groups based on income, age and the mall shopping score and created labels for each of the ideal number of groups.
+With these techniques, I identified the most important shopping groups based on income, age and the mall shopping score and created labels for each of the groups.
 
 ## Objectives
 
@@ -65,7 +65,6 @@ for i in columns:
 
 - **Bivariate Analysis**: Understand the data by using Scatter Plots, Pair Plots and KDE Plots.
 
-  
 
 ```python
 sns.scatterplot(data=df, x= 'Annual Income (k$)', y = 'Spending Score (1-100)')
@@ -76,8 +75,6 @@ sns.pairplot(df)
 ```python
 sns.pairplot(df, hue='Gender')
 ```
-
-
 
 Grouping the Age, Annual Income and Spending score by gender shows us that, while men tend to have higher average annual incomes, women exhibit higher average spending scores.
 ```python
@@ -96,7 +93,100 @@ df[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].corr()
 
 -**Univariate Clustering** : Using a K-Means model, 
 
+```python
+clustering1 = KMeans(n_clusters=3)
+```
+```python
+clustering1.fit(df[['Annual Income (k$)']])	
+```
+```python
+clustering1.labels_
+```
+```python
+df['Income Cluster'] = clustering1.labels_
+df.head()
+```
+```python
+df['Income Cluster'].value_counts()
+```
+```python
+clustering1.inertia_
+```
+```python
+inertia_scores=[]
+for i in range (1,11):
+    kmeans=KMeans(n_clusters=i)
+    kmeans.fit(df[['Annual Income (k$)']])
+    inertia_scores.append(kmeans.inertia_)
+```
+```python
+plt.plot(range(1,11),inertia_scores)
+```
+```python
+df.groupby('Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
 
+-**Bivariate Clustering** : Using a K-Means model, 
+
+```python
+clustering2 = KMeans(n_clusters=5)
+clustering2.fit(df[['Annual Income (k$)', 'Spending Score (1-100)']])
+df['Spending and Income Cluster'] = clustering2.labels_
+df.head()
+```
+```python
+centers = pd.DataFrame(clustering2.cluster_centers_)
+centers.columns = ['X','Y']
+```
+```python
+plt.figure(figsize=(10,8))
+plt.scatter(x=centers['X'], y=centers['Y'], s=100, c='black',marker='*')
+sns.scatterplot(data=df, x = 'Annual Income (k$)', y='Spending Score (1-100)',hue='Spending and Income Cluster',palette='tab10')
+```
+```python
+pd.crosstab(df['Spending and Income Cluster'], df['Gender'])
+```
+```python
+pd.crosstab(df['Spending and Income Cluster'], df['Gender'], normalize='index')
+```
+```python
+clustering1.inertia_
+```
+```python
+inertia_scores=[]
+for i in range (1,11):
+    kmeans=KMeans(n_clusters=i)
+    kmeans.fit(df[['Annual Income (k$)']])
+    inertia_scores.append(kmeans.inertia_)
+```
+```python
+inertia_scores2=[]
+for i in range (1,11):
+    kmeans2=KMeans(n_clusters=i)
+    kmeans2.fit(df[['Annual Income (k$)', 'Spending Score (1-100)']])
+    inertia_scores2.append(kmeans2.inertia_)
+plt.plot(range(1,11),inertia_scores2)
+```
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
+
+-**Multivariate Clustering** : Using a K-Means model, 
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
+```python
+df.groupby('Spending and Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
+```
 ## Findings
 
 - **Cluster**: Target Marketing Group would be Cluster 3, which has a high Spending Score and high income.
