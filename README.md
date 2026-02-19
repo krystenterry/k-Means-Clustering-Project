@@ -91,7 +91,7 @@ df[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].corr()
 
 ### 3. Clustering - Univariate, Bivariate and Multivariate
 
--**Univariate Clustering** : Using a K-Means model, 
+-**Univariate Clustering** : 
 
 ```python
 clustering1 = KMeans(n_clusters=3)
@@ -126,7 +126,7 @@ plt.plot(range(1,11),inertia_scores)
 df.groupby('Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
 ```
 
--**Bivariate Clustering** : Cluster 2 are our customers with the highest Income and Spending Score. Women are the dominate demographic within this cluster, representing 59% of the group. 
+-**Bivariate Clustering** : Cluster 3 are our customers with the highest Income and Spending Score. Women are the dominate demographic within this cluster, representing 59% of the group. 
 <img width="865" height="677" alt="image" src="https://github.com/user-attachments/assets/83f2a16a-7a97-447b-9485-1335327f55f7" />
 
 ```python
