@@ -126,7 +126,8 @@ plt.plot(range(1,11),inertia_scores)
 df.groupby('Income Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean()
 ```
 
--**Bivariate Clustering** : Using a K-Means model, 
+-**Bivariate Clustering** : Cluster 2 are our customers with the highest Income and Spending Score. Women are the dominate demographic within this cluster, representing 59% of the group. 
+<img width="865" height="677" alt="image" src="https://github.com/user-attachments/assets/83f2a16a-7a97-447b-9485-1335327f55f7" />
 
 ```python
 clustering2 = KMeans(n_clusters=5)
@@ -149,6 +150,8 @@ pd.crosstab(df['Spending and Income Cluster'], df['Gender'])
 ```python
 pd.crosstab(df['Spending and Income Cluster'], df['Gender'], normalize='index')
 ```
+<img width="334" height="224" alt="image" src="https://github.com/user-attachments/assets/67e2b517-b699-4aa5-bb0e-b78cc9b8bf44" />
+
 ```python
 clustering1.inertia_
 ```
@@ -210,7 +213,7 @@ df.to_csv('Clustering.csv')
 ## Findings
 
 - **Cluster**: Target Marketing Group would be Cluster 3, which has a high Spending Score and high income.
-- **Demographics**: 54% of Cluster 3 shoppers are women. We develop marketing campaigns that target popular items in this cluster to attract these customers.
+- **Demographics**: 59% of Cluster 3 shoppers are women. We develop marketing campaigns that target popular items in this cluster to attract these customers.
 - **Customer Insights**: Cluster 2 shoppers (low Annual Income but high Shopping Score) present an interesting opportunity to market to customers for sales events on popular items. 
 
 ## Conclusions
