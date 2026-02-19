@@ -2,11 +2,13 @@
 
 ## Project Overview
 
-In this project, I segmented customer data on a specific group of mall customers to identify the best marketing group utilizing the following techniques:
+To understand the Target Customers for the Marketing Team to plan a strategy, I segmented customer data utilizing the following techniques:
 
 1. **Bivariate Analysis/Bivariate Clustering**
 2. **K-Means Algorithm and the Elbow Methodology**
 3. **Summary Statistics**
+
+Using these techniques, I identified the most important shopping groups based on income, age and the mall shopping score and created labels for each of the ideal number of groups.
 
 ## Objectives
 
@@ -20,7 +22,7 @@ In this project, I segmented customer data on a specific group of mall customers
 
 ### 1. Importing Required Libraries
 
-The project begins with importing the required libraries for data analysis, visualization, and clustering.
+The project begins by importing the required libraries for data analysis, visualization, and clustering.
 
 ```python
 import pandas as pd
