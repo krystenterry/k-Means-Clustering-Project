@@ -21,7 +21,7 @@ With these techniques, I identified the most important shopping groups based on 
 
 ### 1. Importing Required Libraries
 
-The project begins by importing the required libraries for data analysis, visualization, and clustering.
+The project begins by importing the required libraries for data analysis, visualization, and clustering and then importing the data.
 
 ```python
 import pandas as pd
@@ -32,62 +32,25 @@ from sklearn.cluster import KMeans
 import warnings 
 warnings.filterwarnings('ignore')
 ```
+```python
+df = pd.read_csv("Mall_Customers.csv")
+```
 
-### 2. Data Exploration & Cleaning
+### 2. Univariate Analysis
 
-- **Record Count**: Determine the total number of records in the dataset.
-- **Customer Count**: Find out how many unique customers are in the dataset.
-- **Category Count**: Identify all unique product categories in the dataset.
-- **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+- **Exploratory Data Analysis**: Understand the data by using Histograms, Probability Density Plots and KDE Plots.
 
-```sql
-SELECT COUNT(*) FROM retail_sales;
-SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
-SELECT DISTINCT category FROM retail_sales;
-
-SELECT * FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
-
-SELECT * FROM retail_sales
-WHERE 
-	transaction_id IS NULL
-	OR
-	sale_date IS NULL
-	OR
-	sale_time IS NULL
-	OR
-	gender IS NULL
-	OR
-	category IS NULL
-	OR
-	quantity IS NULL
-	OR 
-	cogs IS NULL
-	OR
-	total_sale IS NULL;
-	
-DELETE FROM retail_sales
-WHERE
-	transaction_id IS NULL
-	OR
-	sale_date IS NULL
-	OR
-	sale_time IS NULL
-	OR
-	gender IS NULL
-	OR
-	category IS NULL
-	OR
-	quantity IS NULL
-	OR 
-	cogs IS NULL
-	OR
-	total_sale IS NULL;
-
-
+```python
+sns.distplot(df['Annual Income (k$)']);
+```
+```python
+sns.kdeplot(data=df, x='Annual Income (k$)', hue='Gender', fill=True)
+```
+```python
+columns = [ 'Age', 'Annual Income (k$)','Spending Score (1-100)']
+for i in columns: 
+    plt.figure()
+    sns.boxplot(data=df, x='Gender', y= df[i], hue='Gender')
 ```
 
 ### 3. Data Analysis & Findings
