@@ -8,15 +8,14 @@ To understand the Target Customers for the Marketing Team to plan a strategy, I 
 2. **K-Means Algorithm and the Elbow Methodology**
 3. **Summary Statistics**
 
-Using these techniques, I identified the most important shopping groups based on income, age and the mall shopping score and created labels for each of the ideal number of groups.
+With these techniques, I identified the most important shopping groups based on income, age and the mall shopping score and created labels for each of the ideal number of groups.
 
 ## Objectives
 
-1. **Import Libaries and Dataset**
-2. **Conduct Univariate Analysis on Each Feature**
-3. **Conduct Bivariate Analysis on Multiple Features**
-4. **Cluster the Data into Customer Segments through Univariate, Bivariate and Multivariate Analysis**
-5. **Identify the Best Marketing Group within the Dataset**
+1. **Perform EDA**
+2. **Use KMEANS Clustering Algorithm to Create Segments**
+3. **Use Summary Statistics on the Clusters**
+4. **Visualize the Results**
 
 ## Project Structure
 
